@@ -1,0 +1,6 @@
+.HPBAR {
+    border: 1px solid black;
+    background-color: yellowgreen;
+    width: 150px;
+    height: 10px;
+}
