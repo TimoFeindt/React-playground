@@ -1,0 +1,21 @@
+.battleContainer {
+    display: flex;
+    width: 50vw;
+}
+
+.bodyContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.bodyBox {
+    margin: 3rem;
+}
+
+.profilePic {
+    width: 100%;
+}
