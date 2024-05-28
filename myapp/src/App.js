@@ -3,22 +3,30 @@ import Player from "./player";
 
 
 import "./main.css"
+import { useState } from "react";
 
 function App() {
 
-  //const [hpValue, setHpValue] = useState(100);
+  const [playerDmgValue, setPlayerDmgValue] = useState(0)
+  const [enemyDmgValue, setEnemyDmgValue] = useState(0)
 
-  //die HP hier verarbeiten? Initial evtl die richtige Idee und späterwird die funktion ausgelagert!
-
-//Es muss geschaut werden, was an die funktionen weitergegeben werden kann
-  const playerAttack = (value) => {
+  const [playerTurn, setPlayerTurn] = useState(true);
+  const [enemyTurn, setEnemyTurn] = useState(false);
+  
+//Es muss geschaut werden, was an die funktionen weitergegeben werden kann - mit state
+  const playerAttacks = (value) => {
     //console.log('player dmg value')
     //console.log(value)
-    
+    setPlayerDmgValue(value);
+    setPlayerTurn(false);
+    setEnemyTurn(true);
   }
-  const enemyAttack = (value) => {
+
+  
+  const enemyAttacks = (value) => {
     //console.log('enemy dmg value')
     //console.log(value)
+    setEnemyDmgValue(value)
   }
 
   return (
@@ -27,12 +35,14 @@ function App() {
       <div className="battleContainer">
       
       <Player 
-        playerAttack= { playerAttack }
-        enemyAttack= { enemyAttack }
+        playerAttack= { playerAttacks }
+        enemyAttack= { enemyDmgValue }
+        playerTurn= { playerTurn }
       />
       <Gegner
-        playerAttack= { playerAttack }
-        enemyAttack= { enemyAttack }
+        playerAttack= { playerDmgValue }
+        enemyAttack= { enemyAttacks }
+        enemyTurn= { enemyTurn }
       />
       </div>
       
