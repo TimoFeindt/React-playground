@@ -10,25 +10,18 @@ function App() {
   const [playerDmgValue, setPlayerDmgValue] = useState(0)
   const [enemyDmgValue, setEnemyDmgValue] = useState(0)
 
-  const [playerTurn, setPlayerTurn] = useState(true);
-  const [enemyTurn, setEnemyTurn] = useState(false);
-  
+  const [turnCount, setTurnCount] = useState(1);
 //Es muss geschaut werden, was an die funktionen weitergegeben werden kann - mit state
   const playerAttacks = (value) => {
-    //console.log('player dmg value')
-    //console.log(value)
     setPlayerDmgValue(value);
-    setPlayerTurn(value);
-    setEnemyTurn(!value);
   }
 
-  
   const enemyAttacks = (value) => {
-    //console.log('enemy dmg value')
-    //console.log(value)
     setEnemyDmgValue(value)
-    setPlayerTurn(true);
-    setEnemyTurn(false);
+  }
+
+  const trackTurn = (value) => {
+    setTurnCount(turnCount + value)
   }
 
   return (
@@ -39,12 +32,14 @@ function App() {
       <Player 
         playerAttack= { playerAttacks }
         enemyAttack= { enemyDmgValue }
-        playersTurn= { playerTurn }
+        turnCount= { turnCount}
+        turnTrack= { trackTurn }
       />
       <Gegner
         playerAttack= { playerDmgValue }
         enemyAttack= { enemyAttacks }
-        enemysTurn= { enemyTurn }
+        turnCount= { turnCount}
+        turnTrack= {trackTurn}
       />
       </div>
       
