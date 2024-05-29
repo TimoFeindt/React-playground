@@ -18,8 +18,8 @@ function App() {
     //console.log('player dmg value')
     //console.log(value)
     setPlayerDmgValue(value);
-    setPlayerTurn(false);
-    setEnemyTurn(true);
+    setPlayerTurn(value);
+    setEnemyTurn(!value);
   }
 
   
@@ -27,6 +27,8 @@ function App() {
     //console.log('enemy dmg value')
     //console.log(value)
     setEnemyDmgValue(value)
+    setPlayerTurn(true);
+    setEnemyTurn(false);
   }
 
   return (
@@ -37,12 +39,12 @@ function App() {
       <Player 
         playerAttack= { playerAttacks }
         enemyAttack= { enemyDmgValue }
-        playerTurn= { playerTurn }
+        playersTurn= { playerTurn }
       />
       <Gegner
         playerAttack= { playerDmgValue }
         enemyAttack= { enemyAttacks }
-        enemyTurn= { enemyTurn }
+        enemysTurn= { enemyTurn }
       />
       </div>
       

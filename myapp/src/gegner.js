@@ -1,7 +1,7 @@
 import Enemy1Pic from './img/Enemy1.jpg';
 import { useState } from 'react';
 
-export default function Gegner({ enemyAttack, playerAttack}) {
+export default function Gegner({ enemyAttack, playerAttack, enemyTurn}) {
 
     /* const handleplayerAttack = () => {
         if((hpValue - playerAttack) > 100) {
@@ -11,9 +11,24 @@ export default function Gegner({ enemyAttack, playerAttack}) {
         }
     } */
 
+    console.log('Player')
+    console.log('enemyAttack: ' + enemyAttack)
+    console.log('playerAttack: ' + playerAttack)
+    console.log('enemyTurn: ' + enemyTurn)
+    console.log('--------')
+
     
 
     const [hpValue, setHpValue] = useState(100);
+
+    if(!enemyTurn) {
+        if((hpValue - playerAttack) <= 0) {
+             setHpValue(0)
+         }else {
+             setHpValue(hpValue - playerAttack)
+             enemyTurn(false)
+         }
+     }
 
     const handleAttack = (name, dmgValue) => {
         if(name === 'Verband') {
@@ -24,7 +39,7 @@ export default function Gegner({ enemyAttack, playerAttack}) {
             }
         } else if(name !== 'Böser Verband') {
             enemyAttack(dmgValue)
-
+            enemyTurn(false)
         }
     };
 
