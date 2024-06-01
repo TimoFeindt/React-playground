@@ -5,24 +5,11 @@ export default function Gegner({ enemyAttack, playerAttack, turnCount, turnTrack
    
     const [hpValue, setHpValue] = useState(100);
     const [isTurn, setIsTurn] = useState('');
-
-
-    /* const testTurn = () => {
-        if(!enemyTurn) {
-            if((hpValue - playerAttack) <= 0) {
-                 setHpValue(0)
-             }else {
-                 setHpValue(hpValue - playerAttack)
-                 //enemyTurn(false)
-             }
-         }
-    } */
-    //testTurn();
     
     useEffect(()=> {
         if((hpValue - playerAttack) <= 0) {
             setHpValue(0)
-        }else {
+        } else {
             setHpValue(hpValue - playerAttack)
         }
     }, [playerAttack])
@@ -34,7 +21,7 @@ export default function Gegner({ enemyAttack, playerAttack, turnCount, turnTrack
             setIsTurn('')
             if((hpValue - playerAttack) <= 0) {
                 setHpValue(0)
-            }else {
+            } else {
                 setHpValue(hpValue - playerAttack)
             }
         }
@@ -53,7 +40,6 @@ export default function Gegner({ enemyAttack, playerAttack, turnCount, turnTrack
             enemyAttack(dmgValue)
         }
         turnTrack(1)
-        
     };
 
     const attacks = [

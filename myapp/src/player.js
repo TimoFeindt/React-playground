@@ -4,42 +4,28 @@ import { useState, useEffect } from 'react';
 export default function Player({ enemyAttack, playerAttack, turnCount, turnTrack }) {
 
     const [hpValue, setHpValue] = useState(80);
-    const [isTurn, setIsTurn] = useState('');
-
-// event triggern, wenn der gegner seinen zug gemacht hat. Dafür die playerturn value beobachten? 
-// alternative ist es gibt eine funktion mit der man observen kann, ob sich der State vom enemyAttack rerendert wurde 
-    /* const testTurn = () => {
-        if(!playersTurn) {
-           if((hpValue - enemyAttack) <= 0) {
-                setHpValue(0)
-            }else {
-                setHpValue(hpValue - enemyAttack)
-                //playersTurn(false)
-            }
-        }
-    }
-    testTurn(); */
-
-    
+    const [isTurn, setIsTurn] = useState('');  
 
     useEffect(()=> {
         if((hpValue - enemyAttack) <= 0) {
             setHpValue(0)
-        }else {
+        } else {
             setHpValue(hpValue - enemyAttack)
         }
     }, [enemyAttack])
 
-
     useEffect(()=> {
         if(turnCount % 2) {
             setIsTurn('')
+            if((hpValue - enemyAttack) <= 0) {
+                setHpValue(0)
+            } else {
+                setHpValue(hpValue - enemyAttack)
+            }
         } else {
             setIsTurn('disabled')
         }
-        
     }, [turnCount])
-
 
     const handleAttackClick = (name, dmgValue) => {
         if(name === 'Verband') {
