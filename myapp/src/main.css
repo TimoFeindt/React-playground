@@ -14,6 +14,7 @@
 
 .bodyBox {
     margin: 3rem;
+    position: relative;
 }
 
 .profilePic {
@@ -44,4 +45,16 @@
 .attack {
     padding: 5px 30px;
     list-style: none;
+}
+
+.lost::after {
+    position: absolute;
+    top: 25%;
+    left: 25%; 
+    content: 'Lost';
+    height: 50px;
+    width: 50px; 
+    color: red;
+    font-size: 8rem;
+    translate: -50% -50%;
 }

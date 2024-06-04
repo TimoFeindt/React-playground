@@ -30,14 +30,14 @@ function App() {
       <div className="battleContainer">
       
       <Player 
-        playerAttack= { playerAttacks }
-        enemyAttack= { enemyDmgValue }
+        playerAttacks= { playerAttacks }
+        enemyDmgValue= { enemyDmgValue }
         turnCount= { turnCount}
         turnTrack= { trackTurn }
       />
       <Gegner
-        playerAttack= { playerDmgValue }
-        enemyAttack= { enemyAttacks }
+        playerDmgValue= { playerDmgValue }
+        enemyAttacks= { enemyAttacks }
         turnCount= { turnCount}
         turnTrack= {trackTurn}
       />

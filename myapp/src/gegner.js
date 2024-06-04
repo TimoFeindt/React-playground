@@ -1,43 +1,39 @@
 import Enemy1Pic from './img/Enemy1.jpg';
 import { useEffect, useState } from 'react';
 
-export default function Gegner({ enemyAttack, playerAttack, turnCount, turnTrack}) {
+export default function Gegner({ enemyAttacks, playerDmgValue, turnCount, turnTrack}) {
    
     const [hpValue, setHpValue] = useState(100);
     const [isTurn, setIsTurn] = useState('');
-    
-    useEffect(()=> {
-        if((hpValue - playerAttack) <= 0) {
-            setHpValue(0)
-        } else {
-            setHpValue(hpValue - playerAttack)
-        }
-    }, [playerAttack])
+    const [looser, setLooser] = useState('');
 
     useEffect(()=> {
         if(turnCount % 2) {
             setIsTurn('disabled')
         } else {
             setIsTurn('')
-            if((hpValue - playerAttack) <= 0) {
+            if((hpValue - playerDmgValue) <= 0) {
                 setHpValue(0)
+                setLooser('lost');
+                setIsTurn('disabled')
             } else {
-                setHpValue(hpValue - playerAttack)
+                setHpValue(hpValue - playerDmgValue)
             }
         }
+        
     }, [turnCount])
 
     const handleAttack = (name, dmgValue) => {
         if(name === 'Böser Verband') {
             if((hpValue - dmgValue) > 100) {
                 setHpValue(100)
-                enemyAttack(0)
+                enemyAttacks(0)
             } else {
                 setHpValue(hpValue - dmgValue)
-                enemyAttack(0)
+                enemyAttacks(0)
             }
         } else if(name !== 'Böser Verband') {
-            enemyAttack(dmgValue)
+            enemyAttacks(dmgValue)
         }
         turnTrack(1)
     };
@@ -70,7 +66,7 @@ export default function Gegner({ enemyAttack, playerAttack, turnCount, turnTrack
             <h3>Ich bin der Gegner</h3>
             
             <img src={Enemy1Pic} alt="Villian profile pic" className="profilePic"/>
-
+            <span className={looser}></span>
             <span className="hpbar" style={{width: hpValue + '%' }}>HPBAR</span>
             
             <div className="attackContainer">

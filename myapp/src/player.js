@@ -1,43 +1,40 @@
 import HeroPic from './img/Hero.jpg';
 import { useState, useEffect } from 'react';
 
-export default function Player({ enemyAttack, playerAttack, turnCount, turnTrack }) {
+export default function Player({ enemyDmgValue, playerAttacks, turnCount, turnTrack }) {
 
-    const [hpValue, setHpValue] = useState(80);
-    const [isTurn, setIsTurn] = useState('');  
+    const [hpValue, setHpValue] = useState(100);
+    const [isTurn, setIsTurn] = useState('');
+    const [looser, setLooser] = useState('');
 
-    useEffect(()=> {
-        if((hpValue - enemyAttack) <= 0) {
-            setHpValue(0)
-        } else {
-            setHpValue(hpValue - enemyAttack)
-        }
-    }, [enemyAttack])
 
     useEffect(()=> {
         if(turnCount % 2) {
             setIsTurn('')
-            if((hpValue - enemyAttack) <= 0) {
+            if((hpValue - enemyDmgValue) <= 0) {
                 setHpValue(0)
+                setLooser('lost');
+                setIsTurn('disabled')
             } else {
-                setHpValue(hpValue - enemyAttack)
+                setHpValue(hpValue - enemyDmgValue)
             }
         } else {
             setIsTurn('disabled')
         }
+        
     }, [turnCount])
 
     const handleAttackClick = (name, dmgValue) => {
         if(name === 'Verband') {
             if((hpValue - dmgValue) > 100) {
                 setHpValue(100)
-                playerAttack(0)
+                playerAttacks(0)
             } else {
                 setHpValue(hpValue - dmgValue)
-                playerAttack(0)
+                playerAttacks(0)
             }
         } else if(name !== 'Verband') {
-            playerAttack(dmgValue)
+            playerAttacks(dmgValue)
         }
         turnTrack(1)
     };
@@ -69,7 +66,7 @@ export default function Player({ enemyAttack, playerAttack, turnCount, turnTrack
         <div className="bodyBox">
             <h3>Ich bin der Spieler</h3>
             <img src={HeroPic} alt="" className="profilePic" />
-        
+            <span className={looser}></span>
             <span className="hpbar" style={{width: hpValue + '%' }}>HPBAR</span>
 
             <div className="attackContainer">
