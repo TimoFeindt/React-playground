@@ -1,5 +1,5 @@
 import MemoryCard from './components/MemoryCard';
-
+import { useState } from 'react';
 import image1 from './images/Endboss.jpg';
 import image2 from './images/Enemy1.jpg';
 import image3 from './images/Enemy2.jpg';
@@ -8,38 +8,33 @@ import './App.css';
 
 function App() {
 
-  const difficulty = 3;
+  const [difficulty, setDifficutly] = useState(2)
 
+  const array = [difficulty];
+
+  const RenderCards = () => {
+    return array.map(getCard)
+  }
+
+  const getCard = (num) => {
+    return Array.from({ length: num }, (_, index) => <MemoryCard image={image1} key={index+1} />)
+  }
+  
   
 
   return (
     <div className="App">
       <h1>Memory</h1>
+      <h3>Set Difficulty</h3>
+      <button onClick={() => setDifficutly(4)}>Easy</button>
+      <button onClick={() => setDifficutly(6)}>Medium</button>
+      <button onClick={() => setDifficutly(8)}>Hard</button>
       	
-      <MemoryCard
-        image= {image1}
-      />
-      <MemoryCard
-        image= {image1}
-      />
-      <MemoryCard
-        image= {image2}
-      />
-      <MemoryCard
-        image= {image2}
-      />
-      <MemoryCard
-        image= {image3}
-      />
-      <MemoryCard
-        image= {image3}
-      />
-      <MemoryCard
-        image= {image4}
-      />
-      <MemoryCard
-        image= {image4}
-      />
+      <div className='box'>
+        
+        <RenderCards/>
+      </div>
+      
       
     </div>
   );
