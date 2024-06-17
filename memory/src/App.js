@@ -4,12 +4,17 @@ import image1 from './images/Endboss.jpg';
 import image2 from './images/Enemy1.jpg';
 import image3 from './images/Enemy2.jpg';
 import image4 from './images/Hero.jpg';
-import image5 from './images/logo192.png';
+import image5 from './images/Villain5.jpg';
+import image6 from './images/Woman1.jpg';
 import './App.css';
 
 function App() {
+  const babyDifficult = [ image1, image1, image2, image2, image3, image3 ];
+  const easyDifficult = [ image1, image1, image2, image2, image3, image3, image4, image4 ];
+  const mediumDifficult = [ image1, image1, image2, image2, image3, image3, image4, image4, image5, image5 ];
+  const hardDifficult = [ image1, image1, image2, image2, image3, image3, image4, image4, image5, image5, image6, image6 ];
 
-  const [imageList, setImageList] = useState([image1, image1, image2, image2])
+  const [imageList, setImageList] = useState(babyDifficult)
 
   const randomizeImageList = (array) => {
     for(let i = array.length - 1; i > 0; i--) {
@@ -22,50 +27,25 @@ function App() {
   const handleShuffle = () => {
     const shuffledImageCards = randomizeImageList([...imageList]);
     setImageList(shuffledImageCards)
-    console.log(imageList)
   }
 
 
   //increase number of cards
 
   const setDifficutly = (level) => {
-    setImageList([image1, image1, image2, image2])
     addCards(level)
   }
 
   const addCards = (level) => {
     if(level === 'Baby') {
-      return
+      setImageList(babyDifficult)
     } else if(level === 'Easy') {
-      const updateCardList = [
-        ...imageList,
-        image3,
-        image3
-      ];
-      setImageList(updateCardList)
+      setImageList(easyDifficult)
     } else if(level === 'Medium') {
-      const updateCardList = [
-        ...imageList,
-        image3,
-        image3,
-        image4,
-        image4
-      ];
-      setImageList(updateCardList)
+      setImageList(mediumDifficult)
     } else if(level === 'Hard') {
-      const updateCardList = [
-        ...imageList,
-        image3,
-        image3,
-        image4,
-        image4,
-        image5,
-        image5
-      ];
-      setImageList(updateCardList)
+      setImageList(hardDifficult)
     }
-    
-    
   }
   
   const RenderCards = imageList.map((image, index) => {

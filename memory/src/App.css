@@ -54,7 +54,8 @@
 
 .memoryCardBlank {
   position: absolute;
-  background: red;
+  background-image: url('/src/images/CoverImage.jpg');
+  background-size: cover;
   width: 150px;
   height: 100px;
   margin: 2rem;

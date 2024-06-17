@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function MemoryCard({image}) {
 
@@ -13,6 +13,12 @@ export default function MemoryCard({image}) {
         }
         setAmountOfClicks(amountOfClicks + 1);
     }
+
+    useEffect(() => {
+        if(amountOfClicks <= 2) {
+            console.log('Enough clicks')
+        }
+    }, [amountOfClicks])
 
     return (
         <div className="cardBox" onClick={flipCard}>
