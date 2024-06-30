@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100dvh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: 10rem;
+  overflow: hidden;
+  padding: 1rem;
+  margin: 1rem;
+
+  transition: max-width 2s ease;
+  
+  &__headline {
+    font-size: clamp(1rem, 4rem, 10rem);
+  } 
+  &__desc {
+    margin-top: auto;
+    opacity: 0;
+    transition: opacity 2s ease;
+  }
+
+  &__active {
+
+    &.card {
+      max-width: 35rem;
+    }
+    & .card__desc {
+      opacity: 1;
+    }
+  }
+}
