@@ -18,6 +18,7 @@ html {
 .container {
   display: flex;
   justify-content: center;
+  height: 100dvh;
 }
 
 .card {
@@ -27,11 +28,25 @@ html {
   overflow: hidden;
   padding: 1rem;
   margin: 1rem;
+  position: relative;
   transition: max-width 2s ease;
 }
 
+.card__image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  transform: translateX(-45%);
+  transition: transform 2s ease;
+}
+
 .card__headline {
+  position: absolute;
+  top: 15%;
+  left: 0;
   font-size: clamp(1rem, 4rem, 10rem);
+  transform: rotateZ(270deg);
 }
 
 .card__desc {
@@ -41,9 +56,13 @@ html {
 }
 
 .card__active.card {
-  max-width: 35rem;
+  max-width: 22rem;
 }
 
 .card__active .card__desc {
   opacity: 1;
+}
+
+.card__active .card__image {
+  transform: translate(-35%);
 }
