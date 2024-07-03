@@ -29,6 +29,7 @@ html {
   padding: 1rem;
   margin: 1rem;
   position: relative;
+  border-radius: 1rem;
 
   transition: max-width 2s ease;
 
@@ -36,6 +37,7 @@ html {
     position: absolute;
     bottom: 0;
     left: 0;
+    height: 100%;
     z-index: -1;
     transform: translateX(-45%);
     transition: transform 2s ease;
@@ -43,15 +45,22 @@ html {
   
   &__headline {
     position: absolute;
-    top: 15%;
+    bottom: 15%;
     left: 0;
     font-size: clamp(1rem, 4rem, 10rem);
-    transform: rotateZ(270deg);
+    transform: rotateZ(-90deg);
+    transition: transform 2s ease, bottom 2s ease;
+    color: rgb(240, 248, 255);;
+    width: 10rem;
+    padding: 1rem;
   } 
   &__desc {
     margin-top: auto;
     opacity: 0;
     transition: opacity 2s ease;
+    background-color: rgba(240, 248, 255, .5);
+    padding: 1rem;
+    border-radius: .5rem;
   }
 
   &__active {
@@ -64,6 +73,10 @@ html {
     }
     & .card__image {
       transform: translate(-35%);
+    }
+    & .card__headline {
+      transform: rotateZ(0deg);
+      bottom: 80%;
     }
   }
 }

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Card from "./Card";
 import './index.css'
 import Ocean from './img/OceanSquare.jpg';
