@@ -37,16 +37,17 @@ html {
   bottom: 0;
   left: 0;
   z-index: -1;
-  transform: translateX(-45%);
+  transform: translateX(-40%);
   transition: transform 2s ease;
 }
 
 .card__headline {
   position: absolute;
-  top: 15%;
+  bottom: 15%;
   left: 0;
   font-size: clamp(1rem, 4rem, 10rem);
-  transform: rotateZ(270deg);
+  transform: rotateZ(-90deg);
+  width: 10rem;
 }
 
 .card__desc {
@@ -64,5 +65,5 @@ html {
 }
 
 .card__active .card__image {
-  transform: translate(-35%);
+  transform: translate(-30%);
 }

@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Card from "./Card";
 import './index.css'
-import Ocean from './img/Ocean.jpg';
-import Desert from './img/Desert.jpg'
-import IceDesert from './img/iceDesert.jpg'
-import Mountain from './img/Mountain.jpg'
+import Ocean from './img/OceanSquare.jpg';
+import Desert from './img/DesertSquare.jpg'
+import IceDesert from './img/iceDesertSquare.jpg'
+import Mountain from './img/MountainSquare.jpg'
 
 function App() {
 
