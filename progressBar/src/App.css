@@ -1,3 +1,9 @@
+.progressBar__box {
+  display: flex;
+  flex-direction: column;
+  
+}
+
 .progressBar {
   position: relative;
 }
@@ -7,14 +13,23 @@
   top: 0;
   left: 0;
   border: 1px solid red;
-  width: 10px;
-  height: 200px;
+  height: 10px;
+  width: 400px;
 }
 
 .progressBar__inner {
   position: absolute;
-  top: 0;
-  left: 2px;
-  width: 8px;
+  top: 2px;
+  left: 1px;
+  height: 8px;
   background: greenyellow;
+}
+
+.progressBar__button {
+  margin-top: 2rem;
+  width: 5rem;
+} 
+
+.barFull {
+  border: 1px dashed black;
 }
