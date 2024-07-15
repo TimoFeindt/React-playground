@@ -33,3 +33,29 @@
 .barFull {
   border: 1px dashed black;
 }
+
+.loadingBar__box {
+  display: flex;
+  flex-direction: column;
+}
+
+.loadingBar {
+  position: relative;
+}
+
+.loadingBar__outer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  border: 1px solid red;
+  height: 400px;
+}
+
+.loadingBar__inner {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 10px;
+  background: yellowgreen;
+}

@@ -2,45 +2,29 @@ import { useEffect, useState } from "react"
 
 export default function ProgressBar() {
 
-    const [barWidth, setBarWidth] = useState(0)
-    const [buttonClicked, setButtonClicked] = useState(false)
-    const [barFull, setBarFull] = useState(false)
-
+    const [barHeight, setBarHeight] = useState(20);
+    //const [xCor, setXCor] = useState(0)
+    //const [yCor, setYCor] = useState(0)
 
     useEffect(() => {
-        if(!buttonClicked) return
-        const interval = setInterval(()=> {
-            setBarWidth(prevValue => { 
-                    if(prevValue >= 400) {
-                        clearInterval(interval)
-                        return prevValue
-                    }
-                    return prevValue + 1;
-                }
-            );
-        }, 37)
 
-        return () => clearInterval(interval)
-    }, [buttonClicked])
-        
-    useEffect(() => {
-        if(barWidth === 400) {
-            setBarFull(true)
+        const handleScroll = () => {
+            const scrollY = window.scrollY;
+            console.log(scrollY)
         }
-    }, [barWidth])
 
-    const handleStartClick = () => {
-        setButtonClicked(!buttonClicked)
-    }
+        window.addEventListener('scroll', handleScroll)
+        
+        
+    },[])
 
     return(
-        <div className="progressBar__box">
-            <h3>Ich bin die ProgressBr</h3>
-            <div className="progressBar">
-                <div className={`progressBar__outer ${barFull ? "barFull" : ''} `} ></div>
-                <div className="progressBar__inner" style={{width: `${barWidth}px`}}></div>
+        <div className="loadingBar__box" >
+            <h3>Ich bin die progressBar</h3>
+            <div className="loadingBar">
+                <div className='loadingBar__outer' ></div>
+                <div className="loadingBar__inner" style={{height: `${barHeight}px`}}></div>
             </div>
-            <button className="progressBar__button" onClick={handleStartClick}>Fill bar</button>
         </div>
     )
 }
