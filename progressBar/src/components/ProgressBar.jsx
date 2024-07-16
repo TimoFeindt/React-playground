@@ -2,28 +2,29 @@ import { useEffect, useState } from "react"
 
 export default function ProgressBar() {
 
-    const [barHeight, setBarHeight] = useState(20);
+    const [barHeight, setBarHeight] = useState(0);
     //const [xCor, setXCor] = useState(0)
     //const [yCor, setYCor] = useState(0)
 
     useEffect(() => {
 
         const handleScroll = () => {
+            const windowHeight = window.innerHeight;
             const scrollY = window.scrollY;
-            console.log(scrollY)
-        }
+            const documentHeight = document.documentElement.scrollHeight;
 
-        window.addEventListener('scroll', handleScroll)
-        
-        
+            const scrollPosition = (scrollY / (documentHeight - windowHeight))*100 ;
+            setBarHeight(scrollPosition)
+
+        }
+        window.addEventListener('scroll', handleScroll)        
     },[])
 
     return(
         <div className="loadingBar__box" >
             <h3>Ich bin die progressBar</h3>
             <div className="loadingBar">
-                <div className='loadingBar__outer' ></div>
-                <div className="loadingBar__inner" style={{height: `${barHeight}px`}}></div>
+                <div className="loadingBar__inner" style={{height: `${barHeight}%`}}></div>
             </div>
         </div>
     )
