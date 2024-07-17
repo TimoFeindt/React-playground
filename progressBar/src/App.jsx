@@ -1,4 +1,5 @@
 import './App.css'
+import BoxProgressBar from './components/BoxProgressBar';
 import LoadingBar from './components/LoadingBar'
 import ProgressBar from './components/ProgressBar'
 
@@ -17,6 +18,8 @@ function App() {
           fontWeight: '700',
         }}>CODE SNIPPET</div>
       })}
+
+      <BoxProgressBar />
     </div>
   )
 }

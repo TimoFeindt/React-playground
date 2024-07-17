@@ -60,3 +60,52 @@
   display: flex;
   flex-direction: column;
 }
+
+.PB__container {
+  position: relative;
+}
+
+.PB__box {
+  height: 500px;
+  width: 50vw;
+  border: 1px solid black;
+  margin: 0 auto;
+  background: beige;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+.PB__outer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px solid red;
+  height: 200px;
+  width: 10px;
+}
+
+.PB__inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  background-color: black;
+}
+
+.PB__content {
+  border: 1px dashed greenyellow;
+  width: 100px;
+  height: 150px;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.PB__left {
+  align-self: flex-start;
+}
+
+.PB__right {
+  align-self: flex-end;
+}

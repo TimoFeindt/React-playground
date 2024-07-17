@@ -3,8 +3,6 @@ import { useEffect, useState } from "react"
 export default function ProgressBar() {
 
     const [barHeight, setBarHeight] = useState(0);
-    //const [xCor, setXCor] = useState(0)
-    //const [yCor, setYCor] = useState(0)
 
     useEffect(() => {
 
